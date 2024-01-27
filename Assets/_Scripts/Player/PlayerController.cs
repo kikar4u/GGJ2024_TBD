@@ -35,8 +35,8 @@ public class PlayerController : MonoBehaviour
                 Debug.DrawRay(Camera.main.ScreenPointToRay(mousePosition).origin, hit.point, Color.yellow, 1000f);
                 if (hit.collider.gameObject.name == "Player")
                 {
-                    Jump(hit.point);
                 }
+                Jump(hit.point);
             }
         }
     }
