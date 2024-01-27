@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     private bool isJumping = false;
+    [SerializeField] private LayerMask LayerMask;
     public GameObject test;
     [Range(0f, 10f)]
     [SerializeField] float jumpPower = 2;
@@ -30,9 +31,9 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
 
             // Check if the ray hits something in the scene
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, LayerMask))
             {
-                Debug.DrawRay(Camera.main.ScreenPointToRay(mousePosition).origin, hit.point, Color.yellow, 1000f);
+                Debug.DrawRay(Camera.main.ScreenPointToRay(mousePosition).origin, hit.point, Color.yellow, Mathf.Infinity);
                 if (hit.collider.gameObject.name == "Player")
                 {
                 }
