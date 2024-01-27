@@ -31,24 +31,26 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
 
             // Check if the ray hits something in the scene
-            if (Physics.Raycast(ray, out hit, LayerMask))
+            if (Physics.Raycast(ray, out hit))
             {
                 Debug.DrawRay(Camera.main.ScreenPointToRay(mousePosition).origin, hit.point, Color.yellow, Mathf.Infinity);
                 if (hit.collider.gameObject.name == "Player")
                 {
                 }
-                Jump(hit.point);
+                move(hit.point);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Space)) { 
+            playerRb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+            
+        }
     }
-    public void Jump(Vector3 hitPosition)
+    public void move(Vector3 hitPosition)
     {
         Vector3 jumpDirection = hitPosition - transform.position;
         jumpDirection.Normalize();
-
         // Apply a force to make the object jump
         playerRb.velocity = jumpDirection * jumpPower;
-
         // Limit the maximum speed
         playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, 5);
     }
