@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - launchable
+  - floor
   layers:
   - Default
   - TransparentFX
@@ -12,9 +13,9 @@ TagManager:
   - Floor
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - CamA
+  - CamB
   - 
   - 
   - 

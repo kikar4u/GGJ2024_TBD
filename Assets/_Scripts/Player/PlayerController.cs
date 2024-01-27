@@ -12,9 +12,12 @@ public class PlayerController : MonoBehaviour
     public GameObject test;
     [Range(0f, 10f)]
     [SerializeField] float jumpPower = 2;
+    [SerializeField] int scoreToAdd = 20;
+    GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
         playerRb = GetComponent<Rigidbody>();
     }
     void Update()
@@ -53,5 +56,12 @@ public class PlayerController : MonoBehaviour
         playerRb.velocity = jumpDirection * jumpPower;
         // Limit the maximum speed
         playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, 5);
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "launchable")
+        {
+            gameManager.addScore(scoreToAdd);
+        }
     }
 }
