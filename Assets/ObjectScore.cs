@@ -20,7 +20,7 @@ public class ObjectScore : MonoBehaviour
         
         if(other.gameObject.tag == "floor" && !hasTouchFloor)
         {
-            Debug.Log("has touched");
+            //Debug.Log("has touched");
             hasTouchFloor = true;
             gameManager.addScore(scoreToAdd);
         }

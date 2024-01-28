@@ -14,10 +14,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpPower = 2;
     [SerializeField] int scoreToAdd = 20;
     GameManager gameManager;
+    PlayerSoundController playerSoundController;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
+        playerSoundController = GetComponent<PlayerSoundController>();
         playerRb = GetComponent<Rigidbody>();
     }
     void Update()
@@ -43,7 +45,8 @@ public class PlayerController : MonoBehaviour
                 move(hit.point);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space)) { 
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            playerSoundController.JumpSound();
             playerRb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
             
         }

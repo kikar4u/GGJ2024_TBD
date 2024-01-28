@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(score);
+        //Debug.Log(score);
     }
     
     public void StopGame()
