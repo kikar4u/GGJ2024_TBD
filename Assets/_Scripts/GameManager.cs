@@ -29,12 +29,31 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(Time.timeScale == 0) {
+                StartGame();
+                UiControl.Instance.ShowPauseMenu();
+
+            }
+            else
+            {
+                StopGame();
+                UiControl.Instance.ShowPauseMenu();
+
+            }
+        }
         //Debug.Log(score);
     }
     
     public void StopGame()
     {
         Time.timeScale = 0;
+
+    }
+    public void StartGame()
+    {
+        Time.timeScale = 1;
 
     }
     public int GetScore()

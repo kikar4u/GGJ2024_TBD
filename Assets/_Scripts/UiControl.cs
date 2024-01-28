@@ -10,6 +10,7 @@ public class UiControl : MonoBehaviour
 
     private GameManager gameManager;
     [SerializeField] GameObject menu;
+    [SerializeField] GameObject pauseMenu;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -38,5 +39,16 @@ public class UiControl : MonoBehaviour
     public void ShowMenu()
     {
         menu.SetActive(true);
+    }
+    public void ShowPauseMenu()
+    {
+        if (pauseMenu.active)
+        {
+            pauseMenu.SetActive(false);
+        }
+        else
+        {
+            pauseMenu.SetActive(true);
+        }
     }
 }
